@@ -7,6 +7,7 @@ export const SignIn = () => {
 
   const [errorMessages, setErrorMessages] = useState({});
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isRemembered, setIsRemembered] = useState(false);
 
   useEffect(() => {
     document.forms[0].pass.value = '';
@@ -41,6 +42,10 @@ export const SignIn = () => {
       <div className="error">{errorMessages.message}</div>
     );
 
+  const toggleRememberMe = () => {
+    setIsRemembered(isRemembered => !isRemembered);
+  }
+
   const renderForm = (
     <div className="form">
       <form onSubmit={handleSubmit}>
@@ -53,6 +58,10 @@ export const SignIn = () => {
           <label>Password </label>
           <input type="password" name="pass" placeholder="Enter your password" required />
           {renderErrorMessage("pass")}
+        </div>
+        <div className="checkbox-container">
+          <label>Remember me </label>
+          <input type="checkbox" name="checkbox" onChange={toggleRememberMe} />
         </div>
         <div className="button-container">
           <input type="submit" />

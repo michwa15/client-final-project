@@ -64,6 +64,13 @@ input[type="submit"]:hover {
     margin: 15px;
 }
 
+.checkbox-container {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    margin-left: 15px;
+}
+
 label {
     letter-spacing: 0.5px;
 }
