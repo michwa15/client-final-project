@@ -1,5 +1,6 @@
 import React from "react";
 import "./App.css";
+import {SignIn} from './components/sign-in/SignIn'
 
 function App() {
   const [data, setData] = React.useState(null);
@@ -12,11 +13,7 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <p>{!data ? "Loading..." : data}</p>
-        <hi>Im michael</hi>
-        <h3>whooooo!!</h3>
-      </header>
+      <SignIn />
     </div>
   );
 }
