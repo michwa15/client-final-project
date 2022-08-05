@@ -14,6 +14,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <p>{!data ? "Loading..." : data}</p>
+        <hi>Im michael</hi>
       </header>
     </div>
   );
