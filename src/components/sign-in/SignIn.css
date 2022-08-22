@@ -1,4 +1,4 @@
-.app {
+.sign-in {
     font-family: sans-serif;
     display: flex;
     align-items: center;
@@ -9,59 +9,11 @@
     width: 100vw;
     font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
     background-color: #f8f9fd;
-}
-  
-input[type="text"], input[type="password"] {
-    height: 25px;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-}
-  
-input[type="submit"] {
-    margin-top: 10px;
-    cursor: pointer;
-    font-size: 15px;
-    background: #01d28e;
-    border: 1px solid #01d28e;
-    color: #fff;
-    padding: 10px 20px;
- }
-  
-input[type="submit"]:hover {
-    background: #6cf0c2;
- }
-  
-.button-container {
-    display: flex;
-    justify-content: center;
-}
-  
-.login-form {
-    width: 30%;
-    margin-bottom: 20%;
-    background-color: white;
-    padding: 2rem;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-  
-.list-container {
-    display: flex;
-}
-  
-.error {
-    color: red;
-    font-size: 12px;
-}
-  
-.title {
-    font-size: 25px;
-    margin-bottom: 20px;
-}
-  
-.input-container {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin: 15px;
+    background-image: url('../../photos/sign-in-background-img.jpeg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.8;
 }
 
 .checkbox-container {
@@ -69,8 +21,4 @@ input[type="submit"]:hover {
     flex-direction: row;
     gap: 5px;
     margin-left: 15px;
-}
-
-label {
-    letter-spacing: 0.5px;
 }
