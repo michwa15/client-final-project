@@ -9,6 +9,19 @@ export const Checkout = () => {
 
     const [items, setItems] = useState([]);
     const [total, setTotal] = useState(0);
+    const [formData, setFormData] = useState({
+        firstname: '',
+        email: '',
+        address: '',
+        city: '',
+        state: '',
+        zip: '',
+        cardname: '',
+        cardnumber: '',
+        expmonth: '',
+        expyear: '',
+        cvv: ''
+    })
 
     useEffect(() => {
         getCartProducts();
@@ -30,8 +43,21 @@ export const Checkout = () => {
         }
     };
 
-    const handleSubmit = () => { 
-        navigate('/checkout/complete');
+    const handleInputChange = (e) => {
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value
+        })
+    }
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        if(Object.values(formData).some(key => !key)){
+            window.confirm('please fill all values in order to checkout');
+            return;
+        } else{
+            navigate('/checkout/complete');
+        }
     }
 
     return (
@@ -44,22 +70,22 @@ export const Checkout = () => {
                                 <div className="col-50">
                                     <h3>Billing Address</h3>
                                     <label htmlFor="fname"><i className="fa fa-user"></i> Full Name</label>
-                                    <input type="text" id="fname" name="firstname" placeholder="John M. Doe" />
+                                    <input type="text" id="fname" value={formData.firstname} onChange={handleInputChange} name="firstname" placeholder="John M. Doe" />
                                     <label htmlFor="email"><i className="fa fa-envelope"></i> Email</label>
-                                    <input type="text" id="email" name="email" placeholder="john@example.com" />
+                                    <input type="text" id="email" value={formData.email} onChange={handleInputChange} name="email" placeholder="john@example.com" />
                                     <label htmlFor="adr"><i className="fa fa-address-card-o"></i> Address</label>
-                                    <input type="text" id="adr" name="address" placeholder="542 W. 15th Street" />
+                                    <input type="text" id="adr" value={formData.address} onChange={handleInputChange} name="address" placeholder="542 W. 15th Street" />
                                     <label htmlFor="city"><i className="fa fa-institution"></i> City</label>
-                                    <input type="text" id="city" name="city" placeholder="New York" />
+                                    <input type="text" id="city" value={formData.city} onChange={handleInputChange} name="city" placeholder="New York" />
 
                                     <div className="row">
                                         <div className="col-50">
                                             <label htmlFor="state">State</label>
-                                            <input type="text" id="state" name="state" placeholder="NY" />
+                                            <input type="text" id="state" value={formData.state} onChange={handleInputChange} name="state" placeholder="NY" />
                                         </div>
                                         <div className="col-50">
                                             <label htmlFor="zip">Zip</label>
-                                            <input type="text" id="zip" name="zip" placeholder="10001" />
+                                            <input type="text" id="zip" value={formData.zip} onChange={handleInputChange} name="zip" placeholder="10001" />
                                         </div>
                                     </div>
                                 </div>
@@ -73,20 +99,20 @@ export const Checkout = () => {
                                         <i className="fa fa-cc-discover" style={{ color: "orange" }}></i>
                                     </div>
                                     <label htmlFor="cname">Name on Card</label>
-                                    <input type="text" id="cname" name="cardname" placeholder="John More Doe" />
+                                    <input type="text" id="cname" value={formData.cardname} onChange={handleInputChange} name="cardname" placeholder="John More Doe" />
                                     <label htmlFor="ccnum">Credit card number</label>
-                                    <input type="text" id="ccnum" name="cardnumber" placeholder="1111-2222-3333-4444" />
+                                    <input type="text" id="ccnum" value={formData.cardnumber} onChange={handleInputChange} name="cardnumber" placeholder="1111-2222-3333-4444" />
                                     <label htmlFor="expmonth">Exp Month</label>
-                                    <input type="text" id="expmonth" name="expmonth" placeholder="September" />
+                                    <input type="text" id="expmonth" value={formData.expmonth} onChange={handleInputChange} name="expmonth" placeholder="September" />
 
                                     <div className="row">
                                         <div className="col-50">
                                             <label htmlFor="expyear">Exp Year</label>
-                                            <input type="text" id="expyear" name="expyear" placeholder="2018" />
+                                            <input type="text" id="expyear" value={formData.expyear} onChange={handleInputChange} name="expyear" placeholder="2018" />
                                         </div>
                                         <div className="col-50">
                                             <label htmlFor="cvv">CVV</label>
-                                            <input type="text" id="cvv" name="cvv" placeholder="352" />
+                                            <input type="text" id="cvv" value={formData.cvv} onChange={handleInputChange} name="cvv" placeholder="352" />
                                         </div>
                                     </div>
                                 </div>
