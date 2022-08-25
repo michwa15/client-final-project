@@ -3,3 +3,7 @@
     letter-spacing: .08rem;
     font-weight: 800;
 }
+
+button:focus {
+    outline: none !important;
+}

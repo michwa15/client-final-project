@@ -1,0 +1,14 @@
+.non-admin {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    margin: auto;
+    padding-bottom: 80px;
+    justify-content: center;
+    align-items: center;
+}
+
+h2 {
+    margin: 0;
+    color: red;
+}

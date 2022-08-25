@@ -1,12 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from 'react-router-dom';
 import { signup } from "../../api/auth";
-import { errors } from "../../utils/utils";
+import { errors } from "../../helpers/messages";
+import { isAuthenticated } from "../../helpers/auth";
 
 import "./Register.css";
 
 export const Register = () => {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if(isAuthenticated()) {
+      navigate('/products');
+    }
+  }, [navigate])
 
   const [formData, setFormData] = useState({
     username: '',

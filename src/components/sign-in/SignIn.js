@@ -1,12 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from 'react-router-dom';
-import { errors } from "../../utils/utils";
 import { signin } from "../../api/auth";
+import { setAuthentication, isAuthenticated} from "../../helpers/auth";
 
 import './SignIn.css';
 
 export const SignIn = () => {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if(isAuthenticated()) {
+      navigate('/products');
+    }
+  }, [navigate])
 
   const [formData, setFormData] = useState({
     email: '',
@@ -27,7 +33,11 @@ export const SignIn = () => {
     const { email, password, isRemembered } = formData;
     const data = { email, password, isRemembered };
     try {
-      await signin(data);
+      const response = await signin(data);
+      const { token, user } = response.data;
+      const expires = isRemembered ? 10 : 1/144;
+      setAuthentication(token, user, expires);
+
       setFormData({
         email: '',
         password: '',
@@ -35,21 +45,13 @@ export const SignIn = () => {
         isRemembered: false,
         isAdmin: false
       })
+      navigate('/products');
     } catch (err) {
+      console.log('Sign in error');
       const errMessage = err.response.data.errorMessage;
       const msg = errMessage.toLowerCase().includes('pass') ? { name: "pass", message: errMessage } : { name: "email", message: errMessage };
       setFormData({ ...formData, errorMessages: { ...msg } });
     }
-    // if (userData) {
-    //   if (userData.password !== pass.value) {
-    //     setErrorMessages({ name: "pass", message: errors.pass });
-    //   } else {
-    //     const res = await fetch("/register", {method: "POST"});
-    //     navigate('/products');
-    //   }
-    // } else {
-    //   setErrorMessages({ name: "uname", message: errors.uname });
-    // }
   };
 
   const renderErrorMessage = (name) =>
@@ -66,7 +68,7 @@ export const SignIn = () => {
 
   const renderForm = (
     <div className="form">
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} noValidate>
         <div className="input-container">
           <label>Email </label>
           <input type="email" name="email" value={formData.email} placeholder="Enter your mail" onChange={handleInputChange} required />

@@ -13,19 +13,20 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import SettingsIcon from '@mui/icons-material/Settings';
 import { StyledEngineProvider } from '@mui/material/styles';
+import { isAuthenticated, logout } from '../../helpers/auth';
 import './NavBar.css';
 
-const pages = ['Products', 'ReadMe', 'Login', 'Register'];
+let pages = ['Products', 'ReadMe', 'Login', 'Register', 'MyStore'];
+
 const settings = ['My Cart', 'Checkout', 'Logout'];
 
 export const NavBar = () => {
     const navigate = useNavigate();
     
-    const [anchorElUser, setAnchorElUser] = React.useState(null);
-
+    const [isMenuOpen, setIsMenuOpen] = React.useState(false);
     
-    const handleOpenUserMenu = (event) => {
-        setAnchorElUser(event.currentTarget);
+    const toggleSettingsMenu = () => {
+        setIsMenuOpen(isMenuOpen => !isMenuOpen);
     };
 
     const handleNavigate = (page) => {
@@ -42,15 +43,38 @@ export const NavBar = () => {
             case 'Register':
                 navigate('/register');
                 break;
+            case 'MyStore':
+                navigate('/admin-settings');
+                break;
             default: 
                 return;
         }
-
     };
 
-    const handleCloseUserMenu = () => {
-        setAnchorElUser(null);
+    const handleSettingsMenu = (action) => {
+        if(!isAuthenticated()) {
+            navigate('/sign-in');
+            return;
+        }
+        switch(action) {
+            case 'Logout':
+                handleLogout();
+                break;
+            case 'My Cart':
+                navigate('/cart');
+                break;
+            case 'Checkout':
+                navigate('/checkout');
+                break;
+            default :
+                console.log('No act');
+        }
     };
+
+    const handleLogout = async () => {
+        await logout();
+        navigate('/sign-in');
+    }
 
     return (
         <StyledEngineProvider injectFirst>
@@ -61,24 +85,22 @@ export const NavBar = () => {
                         <Typography
                             variant="h6"
                             noWrap
-                            component="a"
-                            href="/"
                             sx={{
                                 mr: 8,
                                 display: { xs: 'none', md: 'flex' },
                                 fontFamily: 'monospace',
                                 fontWeight: 700,
                                 letterSpacing: '.3rem',
-                                color: 'inherit',
+                                color: 'white',
                                 textDecoration: 'none',
                             }}
                         >
                             Shoes on!
                         </Typography>
 
-                        <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+                        <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }} >
                             {pages.map((page) => (
-                                <Button
+                                <Button 
                                     key={page}
                                     onClick={() => handleNavigate(page)}
                                     sx={{ my: 2, color: 'white', display: 'block', letterSpacing: '.1rem' }}
@@ -90,14 +112,13 @@ export const NavBar = () => {
 
                         <Box sx={{ flexGrow: 0}}>
                             <Tooltip title="Open settings">
-                                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                                <IconButton onClick={toggleSettingsMenu} sx={{ p: 0 }}>
                                     <SettingsIcon sx={{color: 'white'}}/>
                                 </IconButton>
                             </Tooltip>
                             <Menu
                                 sx={{ mt: '45px' }}
                                 id="menu-appbar"
-                                anchorEl={anchorElUser}
                                 anchorOrigin={{
                                     vertical: 'top',
                                     horizontal: 'right',
@@ -107,11 +128,11 @@ export const NavBar = () => {
                                     vertical: 'top',
                                     horizontal: 'right',
                                 }}
-                                open={Boolean(anchorElUser)}
-                                onClose={handleCloseUserMenu}
+                                open={isMenuOpen}
+                                onClick={toggleSettingsMenu}
                             >
                                 {settings.map((setting) => (
-                                    <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                                    <MenuItem key={setting} onClick={() => handleSettingsMenu(setting)}>
                                         <Typography textAlign="center">{setting}</Typography>
                                     </MenuItem>
                                 ))}

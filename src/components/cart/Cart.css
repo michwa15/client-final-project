@@ -1,0 +1,7 @@
+.remove-from-cart {
+    background: red !important;
+}
+
+.remove-from-cart:hover {
+    background: #c60202 !important;
+}
