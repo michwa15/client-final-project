@@ -16,7 +16,7 @@ import { StyledEngineProvider } from '@mui/material/styles';
 import { isAuthenticated, logout } from '../../helpers/auth';
 import './NavBar.css';
 
-let pages = ['MyStore', 'About us', 'ReadMe- Michael', 'ReadMe- Dan', 'Products', 'Login', 'Register' ];
+let pages = ['My Store', 'About us', 'Find us', 'ReadMe - Michael', 'ReadMe - Dan', 'Products', 'Login', 'Register' ];
 
 const settings = ['My Cart', 'Checkout', 'Logout'];
 
@@ -43,11 +43,20 @@ export const NavBar = () => {
             case 'Register':
                 navigate('/register');
                 break;
-            case 'MyStore':
+            case 'My Store':
                 navigate('/admin-settings');
                 break;
             case 'About us':
                 navigate('/about');
+                break;
+            case 'Find us':
+                navigate('/find-us');
+                break;
+            case 'ReadMe - Michael':
+                navigate('/readme/michael');
+                break;
+            case 'ReadMe - Dan':
+                navigate('/readme/dan');
                 break;
             default: 
                 return;
@@ -103,7 +112,7 @@ export const NavBar = () => {
                                 textDecoration: 'none',
                             }}
                         >
-                            Shoes on!
+                            Shoez!
                         </Typography>
 
                         <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }} >
@@ -111,7 +120,7 @@ export const NavBar = () => {
                                 <Button 
                                     key={page}
                                     onClick={() => handleNavigate(page)}
-                                    sx={{ my: 2, color: 'white', display: 'block', letterSpacing: '.1rem' }}
+                                    sx={{ my: 2, color: 'white', display: 'block', fontWeight: '400', pr: 3 }}
                                 >
                                     {page}
                                 </Button>

@@ -1,0 +1,12 @@
+.readme-page {
+    border: 1px solid black;
+    width: 70%;
+    margin: 20px auto;
+    padding: 10px 8px;
+}
+
+.row-content-text {
+    color: rgb(94, 151, 204) !important;
+    padding-right: 8px !important; 
+    line-height: 2em;
+}

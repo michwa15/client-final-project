@@ -1,6 +1,7 @@
 .about-us {
     width: 100vw;
     height: 100vh;
+    position: relative;
 }
 
 .image-header {
@@ -28,4 +29,12 @@
     align-items: center;
     gap: 20px;
     font-weight: 500;
+}
+
+.slogen {
+    color: white;
+    position: absolute;
+    top: 15%;
+    left: 25%;
+    font-size: 80px;
 }

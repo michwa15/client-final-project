@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { getShoes, getShoesByName } from '../../api/products';
+import { getShoes } from '../../api/products';
 import { Card } from './card/Card';
 import './Products.css';
 
 export const Products = () => {
 
-    const [shoes, setShoes] = useState([]);
+    const [allShoes, setAllShoes] = useState([]);
+    const [shoesToDisplay, setShoesToDisplay] = useState([]);
     const [searchValue, setSearchValue] = useState('');
 
     useEffect(() => {
@@ -16,16 +17,16 @@ export const Products = () => {
         try {
             const response = await getShoes();
             const { shoes } = response.data;
-            setShoes(shoes);
+            setAllShoes(shoes);
+            setShoesToDisplay(shoes);
         } catch (err) {
             console.log('Error with getting items');
         }
     }
 
     const handleSearch = async (newValue) => {
-        const response = await getShoesByName(newValue);
-        const {shoesBySearch} = response.data;
-        setShoes(shoesBySearch);
+        const updatedShoes = allShoes.filter(shoe => shoe.shoe.toLowerCase().includes(newValue));
+        setShoesToDisplay(updatedShoes);
     }
 
     const handleChangeSearch = async (e) => {
@@ -44,7 +45,7 @@ export const Products = () => {
         <div className='products-page'>
             {renderSearch()}
             <div className='card-deck'>
-                {shoes.map(shoe => <Card key={shoe._id} shoe={shoe} />)}
+                {shoesToDisplay.map(shoe => <Card key={shoe._id} shoe={shoe} />)}
             </div>
         </div>
     )
