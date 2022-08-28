@@ -1,0 +1,13 @@
+.add-to-cart-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 2px;
+}
+
+.add-to-cart-wrapper p {
+    color:green;
+}
+
+.card-img-top {
+    max-height: 284px;
+}

@@ -16,6 +16,7 @@ export const Register = () => {
   }, [navigate])
 
   const [formData, setFormData] = useState({
+    fullname: '',
     username: '',
     password: '',
     errorMessages: {},
@@ -25,8 +26,8 @@ export const Register = () => {
     //Prevent page reload
     event.preventDefault();
 
-    const { username, password } = formData;
-    const data = { username, password };
+    const { fullname, username, password } = formData;
+    const data = { fullname, username, password };
     try {
       await signup(data);
       setFormData({
@@ -59,6 +60,10 @@ export const Register = () => {
   const renderForm = (
     <div className="form">
       <form onSubmit={handleSubmit}>
+        <div className="input-container">
+          <label>Full name </label>
+          <input type="text" name="fullname" value={formData.fullname} placeholder="Enter your full name" onChange={handleInputChange} required />
+        </div>
         <div className="input-container">
           <label>Username </label>
           <input type="email" name="username" value={formData.username} placeholder="Enter your mail" required onChange={handleInputChange} />

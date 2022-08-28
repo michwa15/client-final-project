@@ -10,6 +10,7 @@ import { Checkout } from "./checkout/Checkout";
 import { CheckoutComplete } from "./checkout-complete/CheckoutComplete";
 import { Route, Routes } from 'react-router-dom';
 import "./App.css";
+import { NewProduct } from "./admin-settings/AdminPermission/product-setting/new-product/NewProduct";
 
 function App() {
 
@@ -26,6 +27,7 @@ function App() {
           <Route exact path="/cart" element={<Cart />} />
           <Route exact path="/checkout" element={<Checkout />} />
           <Route exact path="/checkout/complete" element={<CheckoutComplete />} />
+          <Route exact path="/admin/add" element={<NewProduct />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </div>

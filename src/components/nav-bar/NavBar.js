@@ -72,9 +72,14 @@ export const NavBar = () => {
     };
 
     const handleLogout = async () => {
-        await logout();
-        navigate('/sign-in');
-    }
+        try {
+            const user = isAuthenticated();
+            await logout(user);
+            navigate('/sign-in');
+        } catch (err) {
+            console.log('Signout Error', err);
+        }
+    };
 
     return (
         <StyledEngineProvider injectFirst>

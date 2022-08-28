@@ -1,0 +1,26 @@
+.new-product-page {
+    max-width: 1000px;
+    margin: auto;
+    padding-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.title {
+    font-size: 32px;
+}
+
+.new-product-page .input-container { 
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.new-product-page label {
+    width: 300px;
+}
+
+.new-product-page .button-container {
+    margin-top: 50px;
+}

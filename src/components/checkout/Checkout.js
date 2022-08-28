@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { purchase } from '../../api/checkout';
 import { getShoesByUser } from '../../api/products';
 import { isAuthenticated } from '../../helpers/auth';
 import './Checkout.css';
@@ -7,6 +8,7 @@ import './Checkout.css';
 export const Checkout = () => {
     const navigate = useNavigate();
 
+    const [user, setUser] = useState({});
     const [items, setItems] = useState([]);
     const [total, setTotal] = useState(0);
     const [formData, setFormData] = useState({
@@ -38,6 +40,7 @@ export const Checkout = () => {
             }, 0);
             setItems(cartShoes);
             setTotal(totalPrice);
+            setUser(user);
         } catch (err) {
             console.log('Error with getting cart items');
         }
@@ -50,12 +53,19 @@ export const Checkout = () => {
         })
     }
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
         if(Object.values(formData).some(key => !key)){
             window.confirm('please fill all values in order to checkout');
             return;
         } else{
+            const data = {
+                user,
+                shoes: items,
+                totalPrice: total,
+                itemsCount: items.length
+            }
+            await purchase(data);
             navigate('/checkout/complete');
         }
     }

@@ -1,0 +1,20 @@
+.user-setting .user-container {
+    padding: 0px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+    border-radius: 4px;
+    box-shadow: 0px 2px 1px -1px rgba(166, 165, 165, 0.2), 0px 1px 1px 0px rgba(240, 70, 70, 0.14), 0px 1px 3px 0px rgb(0 0 0 / 12%);
+}
+
+.user-history-title {
+    color: rgb(77, 138, 234);
+    cursor: pointer;
+}
+
+.user-history-wrapper {
+    padding-left: 15px;
+    font-weight: 500;
+    color:rgb(136, 158, 195);
+}

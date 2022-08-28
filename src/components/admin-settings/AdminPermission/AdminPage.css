@@ -1,0 +1,48 @@
+.admin-page {
+    width: 95%;
+    margin: 20px auto;
+}
+
+.title {
+    color: rgb(77, 159, 240);
+    text-align: center;
+}
+
+.products-wrapper {
+    max-height: 800px;
+    overflow: scroll;
+}
+
+.add-product-subheader {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.tooltip-icon {
+    color: rgb(77, 159, 240);
+    border: 1px solid;
+    border-radius: 15px;
+}
+
+.MuiTooltip-tooltip {
+    height: 50px;
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px !important;
+    font-weight: 400 !important;
+    background-color: rgb(77, 159, 240) !important;
+    border-radius: 28px ;
+}
+
+.search-user-wrapper {
+    position: relative;
+}
+
+.search-user-wrapper .search-icon {
+    position: absolute;
+    left: 165px;
+    top: 5px
+}

@@ -16,9 +16,14 @@
     opacity: 0.8;
 }
   
-input[type="email"], input[type="password"] {
+input[type="email"], input[type="password"], input[type="text"] {
     height: 25px;
     border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.register input[type="text"] {
+    margin-bottom: 0;
+    padding-left: 2px;
 }
   
 input[type="submit"] {
