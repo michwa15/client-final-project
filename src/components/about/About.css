@@ -1,0 +1,31 @@
+.about-us {
+    width: 100vw;
+    height: 100vh;
+}
+
+.image-header {
+    width: 100%;
+    max-height: 400px;
+}
+
+.about-us-title {
+    color: #007bff;
+    text-align: center;
+    padding: 10px;
+}
+
+.our-team {
+    display: flex;
+    width: 80%;
+    justify-content: space-around;
+    margin: 100px auto;
+}
+
+.single-team-player {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    align-items: center;
+    gap: 20px;
+    font-weight: 500;
+}

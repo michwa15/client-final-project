@@ -11,12 +11,12 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
-import SettingsIcon from '@mui/icons-material/Settings';
+import ManageAccountsRoundedIcon from '@mui/icons-material/ManageAccountsRounded';
 import { StyledEngineProvider } from '@mui/material/styles';
 import { isAuthenticated, logout } from '../../helpers/auth';
 import './NavBar.css';
 
-let pages = ['Products', 'ReadMe', 'Login', 'Register', 'MyStore'];
+let pages = ['MyStore', 'About us', 'ReadMe- Michael', 'ReadMe- Dan', 'Products', 'Login', 'Register' ];
 
 const settings = ['My Cart', 'Checkout', 'Logout'];
 
@@ -45,6 +45,9 @@ export const NavBar = () => {
                 break;
             case 'MyStore':
                 navigate('/admin-settings');
+                break;
+            case 'About us':
+                navigate('/about');
                 break;
             default: 
                 return;
@@ -83,7 +86,7 @@ export const NavBar = () => {
 
     return (
         <StyledEngineProvider injectFirst>
-            <AppBar position="static">
+            <AppBar position="sticky">
                 <Container maxWidth='100vw'>
                     <Toolbar disableGutters>
                         <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
@@ -117,8 +120,8 @@ export const NavBar = () => {
 
                         <Box sx={{ flexGrow: 0}}>
                             <Tooltip title="Open settings">
-                                <IconButton onClick={toggleSettingsMenu} sx={{ p: 0 }}>
-                                    <SettingsIcon sx={{color: 'white'}}/>
+                                <IconButton onClick={toggleSettingsMenu} sx={{ pr: '25px' }}>
+                                    <ManageAccountsRoundedIcon sx={{color: 'white'}}/>
                                 </IconButton>
                             </Tooltip>
                             <Menu

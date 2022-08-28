@@ -8,6 +8,7 @@ import { Products } from "./products/Products";
 import { Cart } from "./cart/Cart";
 import { Checkout } from "./checkout/Checkout";
 import { CheckoutComplete } from "./checkout-complete/CheckoutComplete";
+import { About } from "./about/About";
 import { Route, Routes } from 'react-router-dom';
 import "./App.css";
 import { NewProduct } from "./admin-settings/AdminPermission/product-setting/new-product/NewProduct";
@@ -28,6 +29,7 @@ function App() {
           <Route exact path="/checkout" element={<Checkout />} />
           <Route exact path="/checkout/complete" element={<CheckoutComplete />} />
           <Route exact path="/admin/add" element={<NewProduct />} />
+          <Route exact path="/about" element={<About />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </div>

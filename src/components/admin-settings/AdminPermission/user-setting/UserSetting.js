@@ -26,7 +26,11 @@ export const UserSetting = ({ user }) => {
                 <ul>
                     {user.logInHistory.map(logIn => <li key={logIn}>{logIn}</li>)}    
                 </ul>    
-                user purchases: 
+                user logout history:
+                <ul>
+                    {user.logOutHistory.map(logout => <li key={logout}>{logout}</li>)}    
+                </ul>    
+                user purchases history: 
                 <ul>
                     {user.purchases.map((purchase, idx) => <li key={idx}>{`Price: ${purchase.totalPrice}, Number of Items: ${purchase.itemsCount}, Date: ${purchase.date}`}</li>)}
                 </ul>

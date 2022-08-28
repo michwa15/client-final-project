@@ -9,7 +9,7 @@
 }
 
 .products-wrapper {
-    max-height: 800px;
+    max-height: 640px;
     overflow: scroll;
 }
 
