@@ -35,7 +35,7 @@ export const SignIn = () => {
     try {
       const response = await signin(data);
       const { token, user } = response.data;
-      const expires = isRemembered ? 10 : 1/144;
+      const expires = isRemembered ? 10 : 1/48;
       setAuthentication(token, user, expires);
 
       setFormData({
