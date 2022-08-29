@@ -26,7 +26,8 @@ const data = {
                     they also programmed this website :{')'} <br/>
                     <strong>3. FIND US</strong>- when clicking on "FIND US" in the navbar, you will find all the relevant information about the store opening hours, address and phone
                     number. Moreover, in this page you have the option to keep your phone number and to wait for us to contact you as soon as possible.<br />
-                    <strong>4. blabla</strong>
+                    <strong>4. REVIEWS</strong>- when clicking on "REVIEWS" in the navbar, you can find a lot of relevant reviwes that our customers chose to share with the world. There, 
+                    you can gain information about your items, about our policy and about our way of operating. I'm highly reccomend you to check out this page before you're ordering your new purchase.
                 </p> )
         },
         {
@@ -54,7 +55,7 @@ const data = {
                     * My Cart - '/cart'<br />
                     * Checkout - '/checkout'<br />
                     * Thank you - '/checkout/complete'<br />
-                    * Another page - 
+                    * Reviews - '/reviews'
                 </p>
             )
         }]

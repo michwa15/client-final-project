@@ -16,7 +16,7 @@ import { StyledEngineProvider } from '@mui/material/styles';
 import { isAuthenticated, logout } from '../../helpers/auth';
 import './NavBar.css';
 
-let pages = ['My Store', 'About us', 'Find us', 'ReadMe - Michael', 'ReadMe - Dan', 'Products', 'Login', 'Register' ];
+let pages = ['My Store', 'About us', 'Find us', 'ReadMe - Michael', 'ReadMe - Dan', 'Products', 'Reviews', 'Login', 'Register' ];
 
 const settings = ['My Cart', 'Checkout', 'Logout'];
 
@@ -57,6 +57,9 @@ export const NavBar = () => {
                 break;
             case 'ReadMe - Dan':
                 navigate('/readme/dan');
+                break;
+            case 'Reviews':
+                navigate('/reviews');
                 break;
             default: 
                 return;

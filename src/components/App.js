@@ -10,6 +10,7 @@ import { Checkout } from "./checkout/Checkout";
 import { CheckoutComplete } from "./checkout-complete/CheckoutComplete";
 import { About } from "./about/About";
 import { Map } from './map/Map';
+import { Review } from './review/Review';
 import { Route, Routes } from 'react-router-dom';
 import "./App.css";
 import { NewProduct } from "./admin-settings/AdminPermission/product-setting/new-product/NewProduct";
@@ -34,6 +35,7 @@ function App() {
           <Route exact path="/admin/add" element={<NewProduct />} />
           <Route exact path="/about" element={<About />} />
           <Route exact path="/find-us" element={<Map />} />
+          <Route exact path="/reviews" element={<Review />} />
           <Route exact path="/readme/michael" element={<ReadMeMichael />} />
           <Route exact path="/readme/dan" element={<ReadMeDan />} />
           <Route path="*" element={<NotFound />} />

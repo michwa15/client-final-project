@@ -44,7 +44,7 @@ export const About = () => {
                         sx={{ width: 200, height: 200 }}
                     />
                     <div className='about-me'>
-                        Hello my name is Dan Manor. i'm 22 years old from Tel Aviv. I'm a
+                        Hello my name is Dan Manor. i'm 25 years old from Tel Aviv. I'm a
                         second year computer science student and as a sport and
                         healthy lifestyle fan it seemed to me necessary to find a
                         solution to the difficulty of finding your perfect sports shoes.
