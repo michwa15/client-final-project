@@ -32,7 +32,7 @@ const data = {
         },
         {
             title: "What was hard to do?",
-            content: "It was very tough to manage all the states of the app. A lot of timelines that should happen if something else happened. I recived help from Michael and studied a lot by myself. I didn't have the opportunity to do something in this scale before, and I'm grateful for that. I'm sure this kind of projects are pushing us to be our best."
+            content: "It was very tough to manage all the states of the app. A lot of timelines that should happen if something else happened. I got help from Michael and studied a lot by myself. I didn't have the opportunity to do something in this scale before, and I'm grateful for that. I'm sure this kind of projects are pushing us to be our best."
         },
         {
             title: "Who is your partner? Name and id. What did you do? What did your partner do?",
