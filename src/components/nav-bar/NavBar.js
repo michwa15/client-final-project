@@ -24,8 +24,10 @@ export const NavBar = () => {
     const navigate = useNavigate();
     
     const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+    const [anchorEl, setAnchorEl] = React.useState(null);
     
-    const toggleSettingsMenu = () => {
+    const toggleSettingsMenu = (event) => {
+        setAnchorEl(anchorEl ? null : event.currentTarget);
         setIsMenuOpen(isMenuOpen => !isMenuOpen);
     };
 
@@ -148,6 +150,7 @@ export const NavBar = () => {
                                     vertical: 'top',
                                     horizontal: 'right',
                                 }}
+                                anchorEl={anchorEl}
                                 open={isMenuOpen}
                                 onClick={toggleSettingsMenu}
                             >

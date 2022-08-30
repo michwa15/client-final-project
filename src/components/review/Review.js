@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from'react-router-dom';
+import { isAuthenticated } from '../../helpers/auth';
 import './Review.css';
 import { Card, CardTitle, CardBody } from "reactstrap";
 import { CardReview } from "./card-review/CardReview";
@@ -6,10 +8,14 @@ import { AddReview } from "./add-review/AddReview";
 import { getReviews, addReview } from "../../api/reviews";
 
 export const Review = () => {
-
+    const navigate = useNavigate();
     const [reviews, setReviews] = useState([]);
-
+    
     useEffect(() => {
+        if (!isAuthenticated()) {
+            navigate('/sign-in');
+            return;
+        }
         initialReviews();
     }, []);
 
